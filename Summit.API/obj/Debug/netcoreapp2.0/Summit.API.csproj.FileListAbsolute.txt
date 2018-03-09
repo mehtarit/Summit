@@ -8,4 +8,3 @@ C:\Users\ritika_mehta\Documents\GIT_Summit\Summit.API\Summit.API\obj\Debug\netco
 C:\Users\ritika_mehta\Documents\GIT_Summit\Summit.API\Summit.API\obj\Debug\netcoreapp2.0\Summit.API.AssemblyInfo.cs
 C:\Users\ritika_mehta\Documents\GIT_Summit\Summit.API\Summit.API\obj\Debug\netcoreapp2.0\Summit.API.dll
 C:\Users\ritika_mehta\Documents\GIT_Summit\Summit.API\Summit.API\obj\Debug\netcoreapp2.0\Summit.API.pdb
-C:\Users\ritika_mehta\Documents\GIT_Summit\Summit.API\Summit.API\obj\Debug\netcoreapp2.0\Summit.API.csprojResolveAssemblyReference.cache
