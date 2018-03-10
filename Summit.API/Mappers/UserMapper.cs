@@ -9,24 +9,25 @@ namespace Summit.API.Mappers
     {
         public User Map(RegistrationRequest request)
         {
-            var result = new User();
-
-            result.Username = request.Username;
-            result.Region = request.Region.ToRegionEnum();
-            result.FirstName = request.FirstName;
-            result.LastName = request.LastName;
-            result.PreferedName = request.PreferedName;
-            result.IsCioPeople = request.IsCioPeople;
-            result.IsITDP = request.IsITDP;
-            result.IsITLP = request.IsITLP;
-            result.IsLeader = request.IsLeader;
-            result.IsGraduate = request.IsGraduate;
-            result.TShirtSize = request.TShirtSize.ToTshirtSizeEnum();
-            result.City = request.City.ToCityEnum();
-            result.Country = request.Country.ToCountryEnum();
-            result.Email = request.Email;
-            result.Phone = request.Phone;
-            result.DateTime = DateTime.Now;
+            var result = new User
+            {
+                Username = request.Username,
+                Region = request.Region.ToRegionEnum(),
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                PreferedName = request.PreferedName,
+                IsCioPeople = request.IsCioPeople,
+                IsITDP = request.IsITDP,
+                IsITLP = request.IsITLP,
+                IsLeader = request.IsLeader,
+                IsGraduate = request.IsGraduate,
+                TShirtSize = request.TShirtSize.ToTshirtSizeEnum(),
+                City = request.City.ToCityEnum(),
+                Country = request.Country.ToCountryEnum(),
+                Email = request.Email,
+                Phone = request.Phone,
+                DateTime = DateTime.Now
+            };
 
             return result;
         }

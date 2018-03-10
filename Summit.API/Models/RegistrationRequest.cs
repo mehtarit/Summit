@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace Summit.API.Models
+﻿namespace Summit.API.Models
 {
     public class RegistrationRequest
     {
