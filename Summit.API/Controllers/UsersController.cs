@@ -17,7 +17,7 @@ namespace Summit.API.Controllers
 
         // POST api/users
         [HttpPost]
-        public async Task<IActionResult> Post(RegistrationRequest registrationRequest)
+        public async Task<IActionResult> Post([FromBody] RegistrationRequest registrationRequest)
         {
             return await _registrationHandler.Handle(registrationRequest);
         }
