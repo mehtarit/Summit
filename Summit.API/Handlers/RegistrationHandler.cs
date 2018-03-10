@@ -1,15 +1,29 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Summit.API.Models;
+using Summit.API.Repositories;
+using Summit.API.Entities;
+using Summit.API.Mappers;
 
 namespace Summit.API.Handlers
 {
     public class RegistrationHandler : IRegistrationHandler
     {
-        public Task<ActionResult> Handle(RegistrationRequest request)
+        private readonly IUserRepository _userRespository;
+        private readonly IMapper<RegistrationRequest, User> _mapper;
+
+        public RegistrationHandler(IUserRepository userRepository, IMapper<RegistrationRequest, User> mapper)
         {
-            throw new NotImplementedException();
+            _userRespository = userRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<ActionResult> Handle(RegistrationRequest request)
+        {
+            User newUser = _mapper.Map(request);
+            await _userRespository.Create(newUser);
+            return new OkObjectResult(newUser);
+            
         }
     }
 }

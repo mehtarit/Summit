@@ -1,12 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Summit.API.Enums;
 
-namespace Summit.API.Models
+namespace Summit.API.Entities
 {
-    public class RegistrationRequest
+    public class User
     {
+        [Key]
         public string Username { get; set; }
-        public string Region { get; set; }
+        public Region Region { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PreferedName { get; set; }
@@ -17,9 +19,9 @@ namespace Summit.API.Models
         public bool IsCioPeople { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
-        public string TShirtSize { get; set; }
-
+        public DateTime DateTime { get; set; }
+        public City? City { get; set; }
+        public Country? Country { get; set; }
+        public TshirtSize? TShirtSize { get; set; }
     }
 }
