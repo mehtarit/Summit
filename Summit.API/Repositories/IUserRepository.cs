@@ -5,6 +5,6 @@ namespace Summit.API.Repositories
 {
     public interface IUserRepository
     {
-        Task Create(User Entity);
+        Task<User> Create(User Entity);
     }
 }

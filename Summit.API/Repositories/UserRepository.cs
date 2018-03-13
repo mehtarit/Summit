@@ -13,9 +13,12 @@ namespace Summit.API.Repositories
             _summitContext = summitContext;
         }
 
-        public Task Create(User Entity)
+        public async Task<User> Create(User entity)
         {
-            throw new System.NotImplementedException();
+            var dbEntityEntry = _summitContext.Entry(entity);
+            var response = await _summitContext.Set<User>().AddAsync(entity);
+            await _summitContext.SaveChangesAsync();
+            return response.Entity;
         }
 
     }
