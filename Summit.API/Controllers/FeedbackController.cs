@@ -13,7 +13,9 @@ namespace Summit.API.Controllers
     [Route("api/[controller]")]
     public class FeedbackController : Controller
     {
+
         // POST api/Feedback
+
         [HttpPost]
         public void Post(feedbackModel model)
         {
@@ -32,8 +34,6 @@ namespace Summit.API.Controllers
             request.GetRequestStream().Write(buffer, 0, buffer.Length);
             var response = request.GetResponse();
             json = (new StreamReader(response.GetResponseStream())).ReadToEnd();
-
-           
 
         }
 
