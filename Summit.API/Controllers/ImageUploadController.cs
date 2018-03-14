@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+<<<<<<< HEAD
+using System.Web;
+using System.IO;
+using Firebase.Storage;
+=======
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+>>>>>>> 280c94e15f959944f039ecac11f59f8e0f652142
 using System.IO;
 using Firebase.Storage;
 using System.Net;
@@ -27,10 +33,17 @@ namespace Summit.API.Controllers
     [Route("api/[controller]")]
     public class ImageUploadController : Controller
     {
+<<<<<<< HEAD
+       /* public IActionResult Index()
+        {
+            return View();
+        }*/
+=======
         public IActionResult Index()
         {
             return View();
         }
+>>>>>>> 280c94e15f959944f039ecac11f59f8e0f652142
 
 
 
