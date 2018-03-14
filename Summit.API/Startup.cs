@@ -5,6 +5,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using Summit.API.Data;
 using Microsoft.EntityFrameworkCore;
+using Summit.API.Handlers;
+using Summit.API.Mappers;
+using Summit.API.Models;
+using Summit.API.Entities;
+using Summit.API.Repositories;
 
 namespace Summit.API
 {
@@ -23,6 +28,9 @@ namespace Summit.API
             services.AddMvc();
             services.AddDbContext<SummitContext>(options 
                 => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<IRegistrationHandler, RegistrationHandler>();
+            services.AddTransient<IMapper<RegistrationRequest, User>,UserMapper>();
+            services.AddTransient<IUserRepository, UserRepository>();
 
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(c =>

@@ -13,14 +13,7 @@ namespace Summit.API.Controllers
     [Route("api/[controller]")]
     public class FeedbackController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-
-
-      
+        // POST api/Feedback
         [HttpPost]
         public void Post(feedbackModel model)
         {
@@ -40,7 +33,7 @@ namespace Summit.API.Controllers
             var response = request.GetResponse();
             json = (new StreamReader(response.GetResponseStream())).ReadToEnd();
 
-            
+           
 
         }
 
