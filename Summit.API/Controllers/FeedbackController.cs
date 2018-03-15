@@ -17,14 +17,19 @@ namespace Summit.API.Controllers
         // POST api/Feedback
 
         [HttpPost]
-        public void Post(feedbackModel model)
+        public void Post([FromBody]feedbackModel model)
         {
 
-            string country = "Austin";
+            string country = model.country;
+            if (model.country==null)
+            {
+                country = "Austin";
+            }
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(new
             {
-                user_name = model.Email,
+                session = model.Session,
                 review = model.feedbackk,
+                rating = model.rating
             });
             var request = WebRequest.CreateHttp("https://annualsumm.firebaseio.com/Feedback/" + country + ".json");
             request.Method = "POST";

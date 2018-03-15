@@ -9,7 +9,6 @@ namespace Summit.API.Models
     public class imageUploadModel
     {
 
-        [Required]
 
         public string filepath { get; set; }
 
