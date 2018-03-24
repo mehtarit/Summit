@@ -15,7 +15,7 @@ namespace Summit.API.Mappers
                 Region = request.Region.ToRegionEnum(),
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                PreferedName = request.PreferedName,
+                PreferredName = request.PreferedName,
                 IsCioPeople = request.IsCioPeople,
                 IsITDP = request.IsITDP,
                 IsITLP = request.IsITLP,
@@ -26,7 +26,7 @@ namespace Summit.API.Mappers
                 Country = request.Country.ToCountryEnum(),
                 Email = request.Email,
                 Phone = request.Phone,
-                DateTime = DateTime.Now
+                DateModified = DateTime.Now
             };
 
             return result;
