@@ -8,10 +8,10 @@ namespace Summit.API.Models
 {
     public class feedbackModel
     {
-        [Required]
-        public string Email { get; set; }
+
+        public string Session { get; set; }
         public string feedbackk { get; set; }
-
-
+        public string country { get; set; }
+        public string rating { get; set; }
     }
 }

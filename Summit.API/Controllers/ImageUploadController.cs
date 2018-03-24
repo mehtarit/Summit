@@ -33,7 +33,7 @@ namespace Summit.API.Controllers
 
         //POST api/Images
         [HttpPost]
-        public void Post(imageUploadModel model)
+        public string Post(imageUploadModel model)
         {
             var stream = System.IO.File.Open(model.filepath, FileMode.Open);         
             Random random = new Random();
@@ -51,36 +51,12 @@ namespace Summit.API.Controllers
             var downloadUrl = task;  
             var targetURL = task.TargetUrl; //save this somewhere and use it to get the download link
             model.targetURL = targetURL;
+            return targetURL;
         }
 
 
 
-
-        [HttpGet]
-        public void Get(imageUploadModel model)
-        {
-            string output;
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(model.targetURL);
-            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                output = reader.ReadToEnd();
-            }
-            JObject json = JObject.Parse(output);
-            string name = (string)json.SelectToken("name");
-            name = name.Replace("/", "%2F");
-            string token = (string)json.SelectToken("downloadTokens");
-
-
-            string downloadURL = "https://firebasestorage.googleapis.com/v0/b/annualsumm.appspot.com/o/" + name + "?alt=media&token=" + token;
-
-            model.downloadURL = downloadURL;
-        }
-
+        
 
 
     }
