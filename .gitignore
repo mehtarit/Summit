@@ -282,4 +282,4 @@ msbuild.wrn
 .vs/
 
 #Ignore git properties
-src/api.profile/api.profile/git.properties
+src/api.profile/api.profile/git.properties.vs/Summit.API/v15/Server/sqlite3/storage.ide
