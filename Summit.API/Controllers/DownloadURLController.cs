@@ -33,34 +33,40 @@ namespace Summit.API.Controllers
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-       
+
 
 
 
         [HttpPost]
         public string Post([FromBody]imageUploadModel model)
         {
-            string output;
+            try {
+                string output;
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(model.targetURL);
-            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(model.targetURL);
+                request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                output = reader.ReadToEnd();
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    output = reader.ReadToEnd();
+                }
+                JObject json = JObject.Parse(output);
+                string name = (string)json.SelectToken("name");
+                name = name.Replace("/", "%2F");
+                string token = (string)json.SelectToken("downloadTokens");
+
+
+                string downloadURL = "https://firebasestorage.googleapis.com/v0/b/annualsumm.appspot.com/o/" + name + "?alt=media&token=" + token;
+
+                model.downloadURL = downloadURL;
+                return downloadURL;
             }
-            JObject json = JObject.Parse(output);
-            string name = (string)json.SelectToken("name");
-            name = name.Replace("/", "%2F");
-            string token = (string)json.SelectToken("downloadTokens");
-
-
-            string downloadURL = "https://firebasestorage.googleapis.com/v0/b/annualsumm.appspot.com/o/" + name + "?alt=media&token=" + token;
-
-            model.downloadURL = downloadURL;
-            return downloadURL;
+            catch (Exception ex)
+            {
+                return ex.StackTrace;
+            }
         }
 
 

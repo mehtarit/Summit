@@ -35,24 +35,31 @@ namespace Summit.API.Controllers
         [HttpPost]
         public string Post(imageUploadModel model)
         {
-            var stream = System.IO.File.Open(model.filepath, FileMode.Open);         
-            Random random = new Random();
-            int number = random.Next(50);
-            var name = RandomString(number);
-            name = name + ".png";
 
-            var task = new FirebaseStorage("annualsumm.appspot.com")
-             .Child("data")
-             .Child("summit")
-             .Child(name)     
-             .PutAsync(stream);
+            try {
+                var stream = System.IO.File.Open(model.filepath, FileMode.Open);
+                Random random = new Random();
+                int number = random.Next(50);
+                var name = RandomString(number);
+                name = name + ".png";
 
-            task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %");
-            var downloadUrl = task;  
-            var targetURL = task.TargetUrl; //save this somewhere and use it to get the download link
-            model.targetURL = targetURL;
-            return targetURL;
-        }
+                var task = new FirebaseStorage("annualsumm.appspot.com")
+                 .Child("data")
+                 .Child("summit")
+                 .Child(name)
+                 .PutAsync(stream);
+
+                task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %");
+                var downloadUrl = task;
+                var targetURL = task.TargetUrl; //save this somewhere and use it to get the download link
+                model.targetURL = targetURL;
+                return targetURL;
+            }
+            catch(Exception ex)
+            {
+                return ex.StackTrace;
+            }
+            }
 
 
 

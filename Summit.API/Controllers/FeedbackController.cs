@@ -17,29 +17,35 @@ namespace Summit.API.Controllers
         // POST api/Feedback
 
         [HttpPost]
-        public void Post([FromBody]feedbackModel model)
+        public string Post([FromBody]feedbackModel model)
         {
-
-            string country = model.country;
-            if (model.country==null)
+            try
             {
-                country = "Austin";
+                string country = model.country;
+                if (model.country == null)
+                {
+                    country = "Austin";
+                }
+                var json = Newtonsoft.Json.JsonConvert.SerializeObject(new
+                {
+                    session = model.Session,
+                    review = model.feedbackk,
+                    rating = model.rating
+                });
+                var request = WebRequest.CreateHttp("https://annualsumm.firebaseio.com/Feedback/" + country + ".json");
+                request.Method = "POST";
+                request.ContentType = "application/json";
+                var buffer = Encoding.UTF8.GetBytes(json);
+                request.ContentLength = buffer.Length;
+                request.GetRequestStream().Write(buffer, 0, buffer.Length);
+                var response = request.GetResponse();
+                json = (new StreamReader(response.GetResponseStream())).ReadToEnd();
+                return "success";
             }
-            var json = Newtonsoft.Json.JsonConvert.SerializeObject(new
+            catch (Exception ex)
             {
-                session = model.Session,
-                review = model.feedbackk,
-                rating = model.rating
-            });
-            var request = WebRequest.CreateHttp("https://annualsumm.firebaseio.com/Feedback/" + country + ".json");
-            request.Method = "POST";
-            request.ContentType = "application/json";
-            var buffer = Encoding.UTF8.GetBytes(json);
-            request.ContentLength = buffer.Length;
-            request.GetRequestStream().Write(buffer, 0, buffer.Length);
-            var response = request.GetResponse();
-            json = (new StreamReader(response.GetResponseStream())).ReadToEnd();
-
+                return ex.StackTrace;
+            }
         }
 
 
