@@ -11,7 +11,7 @@ namespace Summit.API.Entities
         public Region Region { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string PreferedName { get; set; }
+        public string PreferredName { get; set; }
         public bool IsGraduate { get; set; }
         public bool IsITDP { get; set; }
         public bool IsLeader { get; set; }
@@ -19,7 +19,7 @@ namespace Summit.API.Entities
         public bool IsCioPeople { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime DateModified { get; set; }
         public City? City { get; set; }
         public Country? Country { get; set; }
         public TshirtSize? TShirtSize { get; set; }

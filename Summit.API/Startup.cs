@@ -25,6 +25,7 @@ namespace Summit.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+			services.AddCors();
             services.AddMvc();
             services.AddDbContext<SummitContext>(options 
                 => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -37,6 +38,10 @@ namespace Summit.API
             {
                 c.SwaggerDoc("v1", new Info { Title = "Summit Api", Version = "v1" });
             });
+            services.Configure<IISOptions>(options =>
+            {
+                options.ForwardClientCertificate = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +52,10 @@ namespace Summit.API
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseSwagger();
+			app.UseCors(
+	options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+);
+			app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Summit API version 1.0");
