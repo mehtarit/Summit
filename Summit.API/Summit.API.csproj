@@ -5,7 +5,38 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Summit.API.deps.json" />
+    <Content Remove="Summit.API.runtimeconfig.json" />
+    <Content Remove="web.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="dotnet-aspnet-codegenerator-design.dll" />
+    <None Remove="Firebase.Storage.dll" />
+    <None Remove="Microsoft.CodeAnalysis.CSharp.Workspaces.dll" />
+    <None Remove="Microsoft.CodeAnalysis.Workspaces.dll" />
+    <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll" />
+    <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Core.dll" />
+    <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.dll" />
+    <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll" />
+    <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll" />
+    <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll" />
+    <None Remove="Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll" />
+    <None Remove="NuGet.Frameworks.dll" />
     <None Remove="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Remove="Summit.API.dll" />
+    <None Remove="Summit.API.pdb" />
+    <None Remove="Summit.API.PrecompiledViews.dll" />
+    <None Remove="Summit.API.PrecompiledViews.pdb" />
+    <None Remove="Swashbuckle.AspNetCore.dll" />
+    <None Remove="Swashbuckle.AspNetCore.Swagger.dll" />
+    <None Remove="Swashbuckle.AspNetCore.SwaggerGen.dll" />
+    <None Remove="Swashbuckle.AspNetCore.SwaggerUI.dll" />
+    <None Remove="System.Composition.AttributedModel.dll" />
+    <None Remove="System.Composition.Convention.dll" />
+    <None Remove="System.Composition.Hosting.dll" />
+    <None Remove="System.Composition.Runtime.dll" />
+    <None Remove="System.Composition.TypedParts.dll" />
   </ItemGroup>
 
   <ItemGroup>
