@@ -10,10 +10,10 @@ namespace Summit.API.Handlers
 {
     public class RegistrationHandler : IRegistrationHandler
     {
-        private readonly IUserRepository _userRespository;
+        private readonly IRepository<User> _userRespository;
         private readonly IMapper<RegistrationRequest, User> _mapper;
 
-        public RegistrationHandler(IUserRepository userRepository, IMapper<RegistrationRequest, User> mapper)
+        public RegistrationHandler(IRepository<User> userRepository, IMapper<RegistrationRequest, User> mapper)
         {
             _userRespository = userRepository;
             _mapper = mapper;

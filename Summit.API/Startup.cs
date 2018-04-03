@@ -30,8 +30,11 @@ namespace Summit.API
             services.AddDbContext<SummitContext>(options 
                 => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IRegistrationHandler, RegistrationHandler>();
+            services.AddTransient<IFeedbackHandler, FeedbackHandler>();
             services.AddTransient<IMapper<RegistrationRequest, User>,UserMapper>();
-            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IMapper<FeedbackRequest, Feedback>, FeedbackMapper>();
+            services.AddTransient<IRepository<User>, UserRepository>();
+            services.AddTransient<IRepository<Feedback>, FeedbackRepository>();
 
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(c =>
