@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Xml;
-using Summit.API.Enums;
-using Swashbuckle.AspNetCore.Swagger;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Summit.API.Models
 {
