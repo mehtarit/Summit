@@ -292,3 +292,5 @@ Summit.API/bin/Debug/netcoreapp2.0/Summit.API.dll
 Summit.API/bin/Debug/netcoreapp2.0/Summit.API.pdb
 Summit.API/bin/Debug
 Summit.API/obj/Debug Summit.API/obj/project.assets.json Summit.API/obj/Summit.API.csproj.nuget.cache Summit.API/obj/Summit.API.csproj.nuget.g.props Summit.API/obj/Summit.API.csproj.nuget.g.targets
+.vs/Summit.API/v15/Server/sqlite3/storage.ide
+Summit.API/Properties/PublishProfiles/

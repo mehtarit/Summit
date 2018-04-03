@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Summit.API.Models;
 using Summit.API.Repositories;
@@ -20,9 +21,16 @@ namespace Summit.API.Handlers
 
         public async Task<ActionResult> Handle(RegistrationRequest request)
         {
-            User newUser = _mapper.Map(request);
-            await _userRespository.Create(newUser);
-            return new OkObjectResult(newUser);
+            try
+            {
+                User newUser = _mapper.Map(request);
+                await _userRespository.Create(newUser);
+                return new OkObjectResult(newUser);
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex.StackTrace);
+            }
             
         }
     }
