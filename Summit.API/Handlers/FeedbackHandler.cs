@@ -29,7 +29,7 @@ namespace Summit.API.Handlers
             }
             catch (Exception ex)
             {
-                return new BadRequestObjectResult(ex.StackTrace);
+                return new BadRequestObjectResult(ex.StackTrace + ex.Message + ex.InnerException?.Message);
             }
         }
     }
