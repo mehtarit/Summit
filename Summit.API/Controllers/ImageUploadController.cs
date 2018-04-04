@@ -19,10 +19,7 @@ namespace Summit.API.Controllers
     [Route("api/[controller]")]
     public class ImageUploadController : Controller
     {
-
-
-
-
+      
         private static Random random = new Random();
         public static string RandomString(int length)
         {
